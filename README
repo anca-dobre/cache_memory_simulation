@@ -1,0 +1,55 @@
+	1. Cache
+	In interfata Cache am declarate metode folosite in FIFO,LRU si LFU
+		1. Prima metoda getLastTimestamp accesez ultima valoare a timestamp-ului;
+		2. A doua metoda adauga un element de tip Subscriptie in Cache si in cazul in care Cache ul este plin elimina 
+un element dupa regulile impuse de tipul Cache ului
+		3. Metoda remove este declarata(asa scria in enunt), dar nu este utilizata
+		4. Metoda existaInCache verifica daca exista in cache un element cu numele dat ca parametru
+		5. Metoda verificaElement verifica daca un element exista in cache si il sterge
+		6. Metoda setNrMaxElemente seteaza numarul maxim de elemente
+		
+	1.1 LRU
+		1. Metoda existaInCache returneaza poz la care se gaseste elementul in cache sau -1 daca nu se gaseste
+			totodata imi actualizeaza si timestamp ul
+		2. Metoda calcularePozitie imi returneaza pozitia elementului cu timestamp ul cel mai mic ce urmeaza a fi eliminat
+		
+	1.2 LFU
+		1. Metoda calcularePozitie imi returneaza pozitia elementului cu nr de accesari cel mai mic; daca sunt 2 
+elem cu acelasi nr de accesari compara si timestamp ul
+
+	2.1 Subscriptie
+	In subscriptie am creat constructorul Subscriptie
+	Am declarat metoda tip() care returneaza tipul elementului, in functie de numarul de accesari premium, basic
+	Am declarat timestamp ul si numarul de accesari care este initializat cu 0.
+	
+	2.2 Free
+	In metoda Free am creat constructorul
+
+	2.3 Basic
+	Am numarul de accesari Basic(numarBasic)
+	Am constructorul
+	Am metoda tip() suprascrisa care stabileste tipul
+
+	2.4 Premium
+	Am nr de accesari Premium, construcotrul si metoda tip() 
+
+	3. Memorie
+	Construiesc un ArrayList in care sa pastrez elementele din memoria principala
+	am metoda existaInMemoriaPrincipala care verifica daca elementul se gaseste in memoria principala si returneaza elementul
+	
+	4. Main
+		1. Imi creez fisierul in care urmeaza sa scriu
+		2. Citesc tipul Cache ului in tipCache, nrMaxElemente si nrOperatiilor
+		3. Creez memoria Principala si cache ul(in functie de tip)
+		4. Setez nr max de elemente
+		5. Incep parcurgerea linie dupa linie 
+			a) daca am ADD
+				Verific daca elementul ce trebuie adaugat este premium sau basic.
+				Daca in memoria principala exista deja un element cu acelasi nume il voi sterge si voi adauga noul element, 
+stergandu l si din cache daca exista si acolo. (folosind metodele din cache si memorie)
+			b) daca am GET
+				pastrez in afisare nr ce trebuie afisat (0-se afla in cache, 1- se afla in memoria principala, 2- nicaieri)
+				folosind metodele ExistaInCache, ExistaInMemoriaPrincipala verific unde se afla elementul meu, si modific variabila afisare
+				in cele din urma afisez variabila afisare, urmata de tipul elementului, stabilit prin metoda tip()
+				
+	
